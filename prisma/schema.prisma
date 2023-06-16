@@ -15,5 +15,5 @@ model Group {
   name         String @unique
   descripition String
   latitude     Float
-  longitude     Float
+  longitude    Float
 }
