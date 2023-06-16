@@ -1,9 +1,17 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { GroupDto } from 'src/groups/dtos/group.dto';
 import { GroupsService } from 'src/groups/services/groups/groups.service';
 
 @Controller('groups')
 export class GroupsController {
   constructor(private groupsService: GroupsService) {}
+
+  @Post()
+  async create(@Body() groupDto: GroupDto) {
+    const group = await this.groupsService.create(groupDto);
+
+    return group;
+  }
 
   @Get(':latitude/:longitude')
   async findAll(@Param() params: Record<string, string>) {

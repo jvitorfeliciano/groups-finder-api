@@ -1,9 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { GroupDto } from 'src/groups/dtos/group.dto';
 import { PrismaService } from 'src/prisma/prisma/prisma.service';
 
 @Injectable()
 export class GroupsRepository {
   constructor(private prismaService: PrismaService) {}
+
+  create(data: GroupDto) {
+    return this.prismaService.group.create({
+      data,
+    });
+  }
 
   findMany(latitude: number, longitude: number) {
     return this.prismaService.$queryRawUnsafe(
