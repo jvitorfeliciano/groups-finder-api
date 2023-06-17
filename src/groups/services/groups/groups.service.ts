@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { GroupDto } from 'src/groups/dtos/group.dto';
 import { GroupsRepository } from 'src/groups/repository/groups.repository/groups.repository';
-import { PrismaService } from 'src/prisma/prisma/prisma.service';
+import { PrismaService } from 'src/prisma/services/prisma.service';
 
 @Injectable()
 export class GroupsService {

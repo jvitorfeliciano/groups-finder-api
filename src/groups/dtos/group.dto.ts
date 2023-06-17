@@ -5,7 +5,10 @@ export class GroupDto {
   name: string;
 
   @IsString()
-  descripition: string;
+  description: string;
+
+  @IsString()
+  link: string;
 
   @IsNumber()
   latitude: number;

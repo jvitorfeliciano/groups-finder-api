@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { GroupDto } from 'src/groups/dtos/group.dto';
-import { PrismaService } from 'src/prisma/prisma/prisma.service';
+import { PrismaService } from 'src/prisma/services/prisma.service';
 
 @Injectable()
 export class GroupsRepository {
@@ -14,7 +14,7 @@ export class GroupsRepository {
 
   findMany(latitude: number, longitude: number) {
     return this.prismaService.$queryRawUnsafe(
-      `SELECT id, name, latitude, longitude, descripition
+      `SELECT id, name, latitude, longitude, description, link
     FROM "Group"
     WHERE (
         6371 * acos(

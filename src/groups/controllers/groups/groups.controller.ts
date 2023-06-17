@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
 import { GroupDto } from 'src/groups/dtos/group.dto';
 import { GroupsService } from 'src/groups/services/groups/groups.service';
 
