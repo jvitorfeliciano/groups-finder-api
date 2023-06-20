@@ -1,7 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { GroupDto } from 'src/groups/dtos/group.dto';
 import { GroupsRepository } from 'src/groups/repository/groups.repository/groups.repository';
-import { PrismaService } from 'src/prisma/services/prisma.service';
 
 @Injectable()
 export class GroupsService {
@@ -15,6 +14,16 @@ export class GroupsService {
 
   async create(groupDto: GroupDto) {
     const group = await this.groupsRepository.create(groupDto);
+
+    return group;
+  }
+
+  async findById(id: number) {
+    const group = await this.groupsRepository.findById(id);
+
+    if (!group) {
+      throw new NotFoundException('Group not found');
+    }
 
     return group;
   }

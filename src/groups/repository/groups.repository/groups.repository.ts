@@ -29,4 +29,12 @@ export class GroupsRepository {
       longitude,
     );
   }
+
+  findById(id: number) {
+    return this.prismaService.group.findUnique({
+      where: {
+        id,
+      },
+    });
+  }
 }
